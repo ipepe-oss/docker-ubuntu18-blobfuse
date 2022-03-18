@@ -1,0 +1,9 @@
+version: '2'
+services:
+  blobfuse:
+    build: .
+    volumes:
+      - ./data:/data
+
+
+# docker-compose -f docker-compose.dev.yml up --build
