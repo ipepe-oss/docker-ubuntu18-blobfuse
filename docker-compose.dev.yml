@@ -1,9 +1,19 @@
-version: '2'
+version: '3'
 services:
   blobfuse:
+    environment:
+      AZURE_STORAGE_ACCOUNT: test123
+      AZURE_STORAGE_ACCESS_KEY: test123
+      AZURE_STORAGE_ACCOUNT_CONTAINER: test123
     build: .
     volumes:
-      - ./data:/data
+      - ./data:/mnt/azure
+      - ./tmp:/tmp/blobfuse
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
 
 
 # docker-compose -f docker-compose.dev.yml up --build
