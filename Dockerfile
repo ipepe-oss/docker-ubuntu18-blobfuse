@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y blobfuse
 
 # CMD ["blobfuse", "--help"]
 
-ENV AZURE_MOUNT_POINT=/mnt/azure
+ENV AZURE_MOUNT_POINT=/mnt/azure/blobfuse
 ENV AZURE_STORAGE_ACCOUNT, AZURE_STORAGE_ACCESS_KEY, AZURE_STORAGE_ACCOUNT_CONTAINER
 COPY mount-blobfuse.sh /
 RUN chmod 755 /mount-blobfuse.sh

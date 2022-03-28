@@ -7,9 +7,16 @@ IFS=$'\n\t'
 
 # mount our blobstore
 test ${AZURE_MOUNT_POINT}
-rm -rf ${AZURE_MOUNT_POINT}
+# rm -rf ${AZURE_MOUNT_POINT}
 mkdir -p ${AZURE_MOUNT_POINT}
 
-blobfuse ${AZURE_MOUNT_POINT} --use-https=true --tmp-path=/tmp/blobfuse/${AZURE_STORAGE_ACCOUNT} --container-name=${AZURE_STORAGE_ACCOUNT_CONTAINER} -o allow_other
+echo Before mounting command
 
-tail -f /var/log/syslog
+blobfuse ${AZURE_MOUNT_POINT} --use-https=true --tmp-path=/tmp/blobfuse/${AZURE_STORAGE_ACCOUNT} --container-name=${AZURE_STORAGE_ACCOUNT_CONTAINER} -o allow_other
+echo blobfuse ${AZURE_MOUNT_POINT} --use-https=true --tmp-path=/tmp/blobfuse/${AZURE_STORAGE_ACCOUNT} --container-name=${AZURE_STORAGE_ACCOUNT_CONTAINER} -o allow_other
+
+
+echo Finished mounting with
+echo $?
+
+tail -f /dev/null
